@@ -1,0 +1,73 @@
+/* rcalcpseudo.txt */
+
+-----------------------------------------------------------------------------
+
+1. Pobierz dwie liczby oraz operator działania
+
+2. Zamień liczby z notacji rzymskiej na dziesiętną. W tym celu dla każdej
+   z wprowadzonych liczb wykonaj:
+	- Wyzeruj zmienną _numX_
+	- Ustaw wskaźnik _r_ na początek tablicy znakowej zawierającej
+	  liczbę w notacji rzymskiej _rom_
+	- Dopóki znak, na który wskazuje wskaźnik _r_ nie jest znakiem końca
+	  łańcucha, dodawaj do _numX_ poniższe wartości, za każdym razem
+	  zwiększając _r_ o 1:
+		- dla _*r_ = 'M' zwiększ _numX_ o 1000;
+		- dla _*r_ = 'D' zwiększ _numX_ o 500;
+		- dla _*r_ = 'C' zwiększ _numX_ o 100, chyba że następny znak
+		  za wskaźnikiem _r_ wynosi:
+			- 'M' - w takim razie zwiększ _numX_ o 900;
+			- 'D' - w takim razie zwiększ _numX_ o 400;
+			- w obu powyższych przypadkach zwiększ _r_ o 1;
+		- dla _*r_ = 'L' zwiększ _numX_ o 50;
+		- dla _*r_ = 'X' zwiększ _numX_ o 10, chyba że następny znak
+		  za wskaźnikiem _r_ wynosi:
+			- 'C' - w takim razie zwiększ _numX_ o 90;
+			- 'L' - w takim razie zwiększ _numX_ o 40;
+		- dla _*r_ = 'V' zwiększ _numX_ o 5;
+		- dla _*r_ = 'I' zwiększ _numX_ o 1, chyba że następny znak
+		  za wskaźnikiem _r_ wynosi:
+			- 'X' - w takim razie zwiększ _numX_ o 9;
+			- 'V' - w takim razie zwiększ _numX_ o 4;
+
+3. Wykonaj żadaną operację na liczbach uzyskując wynik dziesiętny i umieść
+   go w zmiennej _dec_.
+
+4. Zamień wynik z notacji dziesiętnej na rzymską. Wynik umieść w tablicy
+   znakowej _rom_.
+	- Ustaw wskaźnik _r_ na początek tablicy _rom_
+	- Dopóki zmienna _dec_ > 0 wykonuj:
+		- dopóki _dec_ >= 1000, zmniejszaj _dec_ o 1000, za każdym
+		  razem wpisując w miejsce _*r_ znak 'M',  zwiększ _r_  o 1;
+		- jeżeli _dec_ >= 900, zmniejsz _dec_ o tą wartość i wstaw za 
+		  _*r_ i _*(r+1)_ znaki 'C' i 'M', po czym zwiększ wartość
+		  _r_ o 2;
+		- jeżeli _dec_ >= 500, zmniejsz _dec o 500, przypisz do _*r_
+		  znak 'D', _r_++;
+		- jeżeli _dec_ >= 400, zmniejsz _dec_ o tą wartość i wstaw za 
+		  _*r_ i _*(r+1)_ znaki 'C' i 'D', po czym zwiększ wartość
+		  _r_ o 2;
+		- dopóki _dec_ >= 100, zmniejszaj _dec_ o 100, za każdym 
+		  razem wpisując w miejsce _*r_ znak 'C',  zwiększ _r_  o 1;
+		- jeżeli _dec_ >= 90, zmniejsz _dec_ o tą wartość i wstaw za 
+		  _*r_ i _*(r+1)_ znaki 'X' i 'C', po czym zwiększ wartość
+		  _r_ o 2;
+		- jeżeli _dec_ >= 50, zmniejsz _dec o 50, _*r_ = 'L', r_++;
+		- jeżeli _dec_ >= 40, zmniejsz _dec_ o tą wartość i wstaw za 
+		  _*r_ i _*(r+1)_ znaki 'X' i 'L', po czym zwiększ wartość
+		  _r_ o 2;
+		- jeżeli _dec_ >= 9, zmniejsz _dec_ o tą wartość i wstaw za 
+		  _*r_ i _*(r+1)_ znaki 'I' i 'X', po czym zwiększ wartość
+		  _r_ o 2;
+		- jeżeli _dec_ >= 5, zmniejsz _dec o 5, _*r_ = 'V', r_++;
+		- jeżeli _dec_ >= 4, zmniejsz _dec_ o tą wartość i wstaw za 
+		  _*r_ i _*(r+1)_ znaki 'I' i 'V', po czym zwiększ wartość
+		  _r_ o 2;
+		
+5. Wyświetl wynik na ekranie
+
+6. Koniec
+
+-----------------------------------------------------------------------------
+
+/* EOF */
